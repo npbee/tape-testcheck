@@ -1,6 +1,6 @@
 {
   "name": "tape-testcheck",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Use Testcheck with Tape test runner",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "test": "babel-node ./node_modules/.bin/tape ./test/index.js"
   },
   "keywords": [
-      "tape",
-      "testcheck"
+    "tape",
+    "testcheck"
   ],
   "author": "npbee",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "sinon": "^1.17.1"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/npbee/tape-testcheck"
+    "type": "git",
+    "url": "https://github.com/npbee/tape-testcheck"
   }
 }
