@@ -25,7 +25,7 @@ Test.prototype.check = function (generators, propertyFn, options, msg) {
     try {
         let result = testcheck.check(testcheck.property(generators, propertyFn), options);
 
-        if (result.result) {
+        if (result.result === true) {
             this.pass(msg);
         } else {
             this.fail(msg, {
