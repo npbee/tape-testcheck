@@ -43,7 +43,7 @@ _tapeLibTest2['default'].prototype.check = function (generators, propertyFn, opt
     try {
         var result = _testcheck2['default'].check(_testcheck2['default'].property(generators, propertyFn), options);
 
-        if (result.result) {
+        if (result.result === true) {
             this.pass(msg);
         } else {
             this.fail(msg, {
