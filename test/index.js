@@ -1,5 +1,9 @@
-import test from '../src';
 import sinon from 'sinon';
+import tape from 'tape';
+import addAssertions from 'extend-tape';
+import check, { gen, sample } from '../src';
+
+const test = addAssertions(tape, { check });
 
 test('The `check` method', t => {
 
@@ -9,7 +13,7 @@ test('The `check` method', t => {
     );
 
     t.check(
-        [t.gen.int],
+        [gen.int],
         num => {
             t.ok(typeof num === 'number', 'generates correctly.');
             return true;
@@ -19,14 +23,14 @@ test('The `check` method', t => {
     );
 
     t.check(
-        [t.gen.int],
+        [gen.int],
         num => typeof num === 'number',
         'works with passing properties'
     );
 
     sinon.stub(t, 'fail');
     t.check(
-        [t.gen.int],
+        [gen.int],
         num => typeof num === 'string',
         'works with failing properties'
     )
@@ -50,7 +54,7 @@ test('The `check` method', t => {
     let cb = sinon.stub().returns(true);
 
     t.check(
-        [t.gen.int],
+        [gen.int],
         cb,
         { times: 20 },
         '---'
