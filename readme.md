@@ -1,5 +1,7 @@
 # Tape Testcheck
 
+[![Build Status](https://travis-ci.org/npbee/tape-testcheck.svg)](https://travis-ci.org/npbee/tape-testcheck)
+
 A [Tape extension](https://github.com/atabel/extend-tape) to use 
 [Testcheck](https://github.com/leebyron/testcheck-js) with 
 [Tape](https://github.com/substack/tape).  
