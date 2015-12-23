@@ -12,6 +12,10 @@
     "tape",
     "testcheck"
   ],
+  "files": [
+      "dist",
+      "src"
+  ],
   "author": "npbee",
   "license": "MIT",
   "dependencies": {
