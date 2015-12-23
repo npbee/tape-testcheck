@@ -1,20 +1,51 @@
 # Tape Testcheck
 
-Use [Testcheck](https://github.com/leebyron/testcheck-js) with [Tape](https://github.com/substack/tape).  
+[![Build Status](https://travis-ci.org/npbee/tape-testcheck.svg)](https://travis-ci.org/npbee/tape-testcheck)
+
+A [Tape extension](https://github.com/atabel/extend-tape) to use 
+[Testcheck](https://github.com/leebyron/testcheck-js) with 
+[Tape](https://github.com/substack/tape).  
 
 ## Usage
 
-This is a small library that simply adds a `check` method to Tape's `test`
-method.
+To have access to the `t.check` method, you need to extend tape with the exported
+`check` function.
+
+```javascript
+import tape from 'tape';
+import addAssertions from 'extend-tape';
+import check from 'tape-testcheck';
+
+// Add the `check` assertion
+const test = addAssertions(tape, { check });
+
+// Now you can test away
+test('Something', t => {
+    t.check(...);
+});
+```
+
+For convenience, the `gen` and `sample` methods are re-exported for usage with
+your checks:
+
+```javascript
+import tape from 'tape';
+import addAssertions from 'extend-tape';
+import check, { gen, sample } from 'tape-testcheck';
+```
 
 ### A basic test
 
 ```javascript
-import test from 'tape-testcheck';
+import tape from 'tape';
+import addAssertions from 'extend-tape';
+import check, { gen, sample } from 'tape-testcheck';
+
+const test = addAssertions(tape, { check });
 
 test('Something', t => {
     t.check(
-        [t.gen.int],
+        [gen.int],
         num => typeof num === 'number',
         'it works!'
     );
@@ -29,12 +60,16 @@ $ ok 1 it works!
 ### With Options
 
 ```javascript
-import test from 'tape-testcheck';
+import tape from 'tape';
+import addAssertions from 'extend-tape';
+import check, { gen, sample } from 'tape-testcheck';
+
+const test = addAssertions(tape, { check });
 
 test('Something', t => {
     // with options
     t.check(
-        [t.gen.int],
+        [gen.int],
         num => typeof num === 'number',
         { times: 10 },
         'works with options'
@@ -50,12 +85,16 @@ $ ok 1 works with options
 ### A failing test
 
 ```javascript
-import test from 'tape-testcheck';
+import tape from 'tape';
+import addAssertions from 'extend-tape';
+import check, { gen, sample } from 'tape-testcheck';
+
+const test = addAssertions(tape, { check });
 
 test('Something', t => {
 
     t.check(
-        [t.gen.int],
+        [gen.int],
         num => typeof num === 'string',
         'it fails!'
     );
@@ -87,12 +126,3 @@ $ not ok 1 it fails!
 
 Run a testcheck property on `propertyFn` with the provided `generators` and
 `options`.  The `msg` will be passed to the `t.pass` and `t.fail` methods.
-
-
-### t.gen
-
-Alias for `testcheck.gen`.
-
-### t.sample
-
-Alias for `testcheck.sample`

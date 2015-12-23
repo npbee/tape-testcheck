@@ -1,16 +1,20 @@
 {
   "name": "tape-testcheck",
-  "version": "0.1.1",
+  "version": "1.1.1",
   "description": "Use Testcheck with Tape test runner",
   "main": "index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "babel ./src/index.js --out-file ./dist/index.js",
+    "build": "babel src --out-dir dist",
     "test": "babel-node ./node_modules/.bin/tape ./test/index.js"
   },
   "keywords": [
     "tape",
     "testcheck"
+  ],
+  "files": [
+      "dist",
+      "src"
   ],
   "author": "npbee",
   "license": "MIT",
@@ -20,6 +24,7 @@
   },
   "devDependencies": {
     "babel": "^5.8.23",
+    "extend-tape": "^1.1.0",
     "sinon": "^1.17.1"
   },
   "repository": {
