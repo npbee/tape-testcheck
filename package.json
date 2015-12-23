@@ -1,6 +1,6 @@
 {
   "name": "tape-testcheck",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Use Testcheck with Tape test runner",
   "main": "index.js",
   "scripts": {
